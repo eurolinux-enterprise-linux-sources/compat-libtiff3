@@ -1,7 +1,7 @@
 Summary: Compatibility package for libtiff 3
 Name: compat-libtiff3
 Version: 3.9.4
-Release: 11%{?dist}
+Release: 12%{?dist}
 
 License: libtiff
 Group: System Environment/Libraries
@@ -36,6 +36,7 @@ Patch29: libtiff-CVE-2013-4231.patch
 Patch30: libtiff-CVE-2013-4232.patch
 Patch31: libtiff-CVE-2013-4244.patch
 Patch32: libtiff-CVE-2013-4243.patch
+Patch33: libtiff-CVE-2018-7456.patch
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: zlib-devel libjpeg-devel
@@ -80,6 +81,7 @@ to use the current version of libtiff.
 %patch30 -p1
 %patch31 -p1
 %patch32 -p1
+%patch33 -p1
 
 # Use build system's libtool.m4, not the one in the package.
 rm -f libtool.m4
@@ -124,6 +126,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libdir}/libtiffxx.so.*
 
 %changelog
+* Mon May 28 2018 Nikola Forró <nforro@redhat.com> - 3.9.4-12
+- Fix CVE-2018-7456
+- Resolves: #1561319
+
 * Fri Feb 28 2014 Petr Hracek <phracek@redhat.com> - 3.9.4-11
 - Introduce compatibility package for libtiff3
 Resolves: #1062698
